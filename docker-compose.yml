@@ -1,0 +1,117 @@
+version: "3.9"
+services:
+  webserver:
+    container_name: nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    links:
+      - api
+    ports:
+      - "82:82"
+    restart: unless-stopped
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+      - ./api:/var/www/
+    networks:
+      - recruits
+
+  api:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+      - redis
+      - laravel-echo-server
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./api:/var/www
+      - ./api/.dev/xdebug/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    working_dir: /var/www/
+    tty: true
+    restart: always
+    networks:
+      - recruits
+
+  ui:
+    container_name: ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    volumes:
+      - ./ui:/home/node/learning-language/ui
+    working_dir: /home/node/learning-language/ui
+    ports:
+      - "3000:3000"
+    tty: true
+    restart: always
+    networks:
+      - recruits
+
+  cms:
+    container_name: cms
+    build:
+      context: ./cms
+      dockerfile: Dockerfile
+    volumes:
+      - ./cms:/home/node/learning-language/cms
+    working_dir: /home/node/learning-language/cms
+    ports:
+      - "4000:4000"
+    tty: true
+    restart: unless-stopped
+    networks:
+      - recruits
+      
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    container_name: mysql
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: securerootpassword
+      MYSQL_DATABASE: api
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - 3336:3306
+    restart: unless-stopped
+    networks:
+      - recruits
+
+  redis:
+    build:
+      context: ./cache
+      dockerfile: Dockerfile
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    command: redis-server
+    volumes:
+      - ./cache/data:/var/lib/redis
+    networks:
+      - recruits
+
+  laravel-echo-server:
+    build:
+      context: ./laravel-echo-server
+      dockerfile: Dockerfile
+    container_name: laravel-echo-server
+    restart: unless-stopped
+    ports:
+      - "6001:6001"
+    volumes:
+      - ./laravel-echo-server:/var/www/laravel-echo-server
+    networks:
+      - recruits
+
+networks:
+  recruits:
+    name: recruits
+
