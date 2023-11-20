@@ -1,6 +1,2 @@
 *
 !.gitignore
-./swoole
-./horizon
-./supervisor
-./laravel.log
