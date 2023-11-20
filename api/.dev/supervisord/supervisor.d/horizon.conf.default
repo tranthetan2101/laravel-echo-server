@@ -5,5 +5,5 @@ user=www-data
 autostart=true
 autorestart=true
 redirect_stderr=true
-stdout_logfile=/var/www/horizon.log
+stdout_logfile=/var/www/storage/logs/horizon/horizon.log
 stopwaitsecs=3600
