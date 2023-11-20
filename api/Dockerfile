@@ -41,5 +41,4 @@ ENV ENABLE_HORIZON 1
 ENTRYPOINT ["/bin/bash","/var/www/.dev/docker-entrypoint.sh"]
 
 EXPOSE 9000
-
 CMD ["supervisord", "-n", "-c", "/etc/supervisord/supervisord.conf"]
