@@ -1,0 +1,24 @@
+2023-11-21 12:20:38,640 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2023-11-21 12:20:38,640 INFO Included extra file "/etc/supervisord/supervisor.d/cron.conf" during parsing
+2023-11-21 12:20:38,640 INFO Included extra file "/etc/supervisord/supervisor.d/horizon.conf" during parsing
+2023-11-21 12:20:38,640 INFO Included extra file "/etc/supervisord/supervisor.d/php-fpm.conf" during parsing
+2023-11-21 12:20:38,648 INFO supervisord started with pid 1
+2023-11-21 12:20:39,649 INFO spawnerr: can't find command 'crond'
+2023-11-21 12:20:39,654 INFO spawned: 'horizon' with pid 10
+2023-11-21 12:20:39,658 INFO spawned: 'php-fpm' with pid 11
+2023-11-21 12:20:41,201 INFO spawnerr: can't find command 'crond'
+2023-11-21 12:20:41,202 INFO success: horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-11-21 12:20:41,205 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-11-21 12:20:43,078 INFO exited: horizon (exit status 1; not expected)
+2023-11-21 12:20:44,079 INFO spawnerr: can't find command 'crond'
+2023-11-21 12:20:44,082 INFO spawned: 'horizon' with pid 22
+2023-11-21 12:20:44,424 INFO exited: horizon (exit status 1; not expected)
+2023-11-21 12:20:45,427 INFO spawned: 'horizon' with pid 25
+2023-11-21 12:20:45,755 INFO exited: horizon (exit status 1; not expected)
+2023-11-21 12:20:47,759 INFO spawnerr: can't find command 'crond'
+2023-11-21 12:20:47,759 INFO gave up: cron-job entered FATAL state, too many start retries too quickly
+2023-11-21 12:20:47,761 INFO spawned: 'horizon' with pid 28
+2023-11-21 12:20:48,017 INFO exited: horizon (exit status 1; not expected)
+2023-11-21 12:20:51,023 INFO spawned: 'horizon' with pid 31
+2023-11-21 12:20:51,270 INFO exited: horizon (exit status 1; not expected)
+2023-11-21 12:20:52,272 INFO gave up: horizon entered FATAL state, too many start retries too quickly
