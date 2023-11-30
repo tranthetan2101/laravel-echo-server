@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->id();
+            $table->uuid("id")->primary();
             $table->string("key");
             $table->string("value");
             $table->string("description")->nullable();
             $table->uuid("creator_uid")->nullable();
-            $table->unsignedBigInteger("creator_id");
+            $table->uuid("creator_id");
             $table->foreign('creator_id')
                 ->references('id')
                 ->on('users')

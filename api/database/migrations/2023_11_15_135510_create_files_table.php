@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("directory_id");
+            $table->uuid("id")->primary();
+            $table->uuid("directory_id");
             $table->foreign("directory_id")
                 ->references("id")
                 ->on("directories")
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string("path");
             $table->string("extension");
             $table->integer("size");
-            $table->unsignedBigInteger("creator_id");
+            $table->uuid("creator_id");
             $table->foreign('creator_id')
                 ->references('id')
                 ->on('users')

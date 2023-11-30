@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('assign_tag', function (Blueprint $table) {
             $table->string("assign_type");
-            $table->unsignedBigInteger("assign_id");
-            $table->unsignedBigInteger("tag_id");
+            $table->uuid("assign_id");
+            $table->uuid("tag_id");
             $table->foreign("tag_id")
                 ->references("id")
                 ->on("tags")

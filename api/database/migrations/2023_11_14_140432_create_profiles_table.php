@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->id();
+            $table->uuid("id")->primary();
             $table->string("full_name");
             $table->timestamp("birth_day");
             $table->binary("avatar");
             $table->integer("gender");
             $table->integer("student_level")->default(3);
             $table->string("school")->nullable();
-            $table->unsignedBigInteger("user_id");
+            $table->uuid("user_id");
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
@@ -35,4 +35,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('profiles');
     }
+
 };
