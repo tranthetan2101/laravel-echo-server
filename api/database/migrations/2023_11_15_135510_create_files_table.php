@@ -13,19 +13,15 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->uuid("directory_id");
-            $table->foreign("directory_id")
-                ->references("id")
-                ->on("directories")
+            $table->foreignUuid("directory_id")
+                ->constrained("directories")
                 ->onDelete("cascade");
             $table->string("name");
             $table->string("path");
             $table->string("extension");
             $table->integer("size");
-            $table->uuid("creator_id");
-            $table->foreign('creator_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('creator_id')
+                ->constrained('users')
                 ->onDelete('cascade');
             $table->timestamps();
         });

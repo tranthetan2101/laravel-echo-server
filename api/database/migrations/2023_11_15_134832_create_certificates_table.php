@@ -15,10 +15,8 @@ return new class extends Migration
             $table->uuid("id")->primary();
             $table->string("name");
             $table->text("description")->nullable();
-            $table->uuid("language_id");
-            $table->foreign("language_id")
-                ->references("id")
-                ->on("languages")
+            $table->foreignUuid('language_id')
+                ->constrained("languages")
                 ->onDelete("cascade");
         });
     }

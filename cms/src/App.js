@@ -1,8 +1,8 @@
-import RoutesApp from './routes';
+import Routes from "./routes"
 const App = () => {
     return (
         <div className="App">
-            <RoutesApp />
+            <Routes />
         </div>
     )
 }

@@ -19,11 +19,9 @@ return new class extends Migration
             $table->integer("gender");
             $table->integer("student_level")->default(3);
             $table->string("school")->nullable();
-            $table->uuid("user_id");
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            $table->foreignUuid('user_id')
+                ->constrained("users")
+                ->onDelete("cascade");
             $table->timestamps();
         });
     }

@@ -7,7 +7,7 @@ use Throwable;
 
 class NotFoundException extends AbstractException
 {
-    public function __construct(string $message = "Not found", int $statusCode = 422, ?Throwable $previous = null)
+    public function __construct(string $message = "Not found", int $statusCode = 404, ?Throwable $previous = null)
     {
         $this->message = $message;
         $this->statusCode = $statusCode;

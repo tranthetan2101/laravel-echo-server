@@ -17,18 +17,15 @@ return new class extends Migration
             $table->string("path");
             $table->integer("count_file");
             $table->integer("count_directory");
-            $table->uuid("creator_id");
-            $table->foreign('creator_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('creator_id')
+                ->constrained('users')
                 ->onDelete('cascade');
+
             $table->timestamps();
         });
-        Schema::table('directories', function (Blueprint $table) {
-            $table->uuid("parent_id");
-            $table->foreign("parent_id")
-                ->references("id")
-                ->on("directories")
+        Schema::table("directories", function (Blueprint $table){
+            $table->foreignUuid("parent_id")
+                ->constrained("directories")
                 ->onDelete("cascade");
         });
     }

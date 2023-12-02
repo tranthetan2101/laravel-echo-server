@@ -12,16 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_certificates', function (Blueprint $table) {
-            $table->uuid("user_id");
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-            $table->uuid("certificate_id");
-            $table->foreign('certificate_id')
-                ->references('id')
-                ->on('certificates')
-                ->onDelete('cascade');
+            $table->foreignUuid('user_id')
+                ->constrained("users")
+                ->onDelete("cascade");
+            $table->foreignUuid('certificate_id')
+                ->constrained("certificates")
+                ->onDelete("cascade");
             $table->string("range");
             $table->timestamp("end_date");
         });

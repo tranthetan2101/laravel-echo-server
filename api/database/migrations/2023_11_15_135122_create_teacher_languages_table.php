@@ -13,16 +13,12 @@ return new class extends Migration
     {
         Schema::create('teacher_languages', function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->uuid("teacher_id");
-            $table->foreign('teacher_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('teacher_id')
+                ->constrained('users')
                 ->onDelete('cascade');
-            $table->uuid("language_id");
-            $table->foreign("language_id")
-                ->references("id")
-                ->on("languages")
-                ->onDelete("cascade");
+            $table->foreignUuid('language_id')
+                ->constrained('languages')
+                ->onDelete('cascade');
             $table->text("description");
             $table->bigInteger("price");
             $table->boolean("status");

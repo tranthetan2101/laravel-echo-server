@@ -13,17 +13,13 @@ return new class extends Migration
     {
         Schema::create('shared_docs', function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->uuid("user_id");
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('user_id')
+                ->constrained('users')
                 ->onDelete('cascade');
             $table->uuid("docs_id");
             $table->string("type");
-            $table->uuid("permission_id");
-            $table->foreign('permission_id')
-                ->references('id')
-                ->on('permissions')
+            $table->foreignUuid('permission_id')
+                ->constrained('permissions')
                 ->onDelete('cascade');
             $table->timestamp("sharing_day");
         });

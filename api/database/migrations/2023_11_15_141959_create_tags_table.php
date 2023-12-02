@@ -17,10 +17,8 @@ return new class extends Migration
             $table->string("value");
             $table->string("description")->nullable();
             $table->uuid("creator_uid")->nullable();
-            $table->uuid("creator_id");
-            $table->foreign('creator_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('creator_id')
+                ->constrained('users')
                 ->onDelete('cascade');
             $table->timestamps();
         });
