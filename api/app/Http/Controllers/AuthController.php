@@ -23,13 +23,15 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request): JsonResponse
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request([User::EMAIL, User::PASSWORD]);
         if(Auth::attempt($credentials)){
             return $this->responseError("Incorrect info. Please try again", 401);
         }
         $accessToken = $this->authService->createToken($request);
         return $this->responseSuccess(["token" => $accessToken]);
     }
+
+
     public function logout(): JsonResponse
     {
         if(Auth::check()){
