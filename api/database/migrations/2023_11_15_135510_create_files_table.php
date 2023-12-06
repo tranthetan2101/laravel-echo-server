@@ -12,20 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("directory_id");
-            $table->foreign("directory_id")
-                ->references("id")
-                ->on("directories")
+            $table->uuid("id")->primary();
+            $table->foreignUuid("directory_id")
+                ->constrained("directories")
                 ->onDelete("cascade");
             $table->string("name");
             $table->string("path");
             $table->string("extension");
             $table->integer("size");
-            $table->unsignedBigInteger("creator_id");
-            $table->foreign('creator_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('creator_id')
+                ->constrained('users')
                 ->onDelete('cascade');
             $table->timestamps();
         });

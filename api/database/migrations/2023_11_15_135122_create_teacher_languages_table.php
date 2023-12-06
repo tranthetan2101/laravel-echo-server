@@ -12,17 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('teacher_languages', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("teacher_id");
-            $table->foreign('teacher_id')
-                ->references('id')
-                ->on('users')
+            $table->uuid("id")->primary();
+            $table->foreignUuid('teacher_id')
+                ->constrained('users')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger("language_id");
-            $table->foreign("language_id")
-                ->references("id")
-                ->on("languages")
-                ->onDelete("cascade");
+            $table->foreignUuid('language_id')
+                ->constrained('languages')
+                ->onDelete('cascade');
             $table->text("description");
             $table->bigInteger("price");
             $table->boolean("status");

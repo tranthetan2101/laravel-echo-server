@@ -12,22 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('teaching', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("teacher_id");
-            $table->foreign('teacher_id')
-                ->references('id')
-                ->on('users')
+            $table->uuid("id")->primary();
+            $table->foreignUuid('teacher_id')
+                ->constrained('users')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger("student_id");
-            $table->foreign('student_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('student_id')
+                ->constrained('users')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger("language_id");
-            $table->foreign("language_id")
-                ->references("id")
-                ->on("languages")
-                ->onDelete("cascade");
+            $table->foreignUuid('language_id')
+                ->constrained('languages')
+                ->onDelete('cascade');
             $table->bigInteger("price");
             $table->float("hour_per_session");
             $table->integer("session_per_week");

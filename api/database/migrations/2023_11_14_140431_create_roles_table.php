@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->id();
+            $table->uuid("id")->primary();
             $table->enum("name", RoleEnum::VALUES)->unique();
             $table->string("description")->nullable();
         });
@@ -33,14 +33,17 @@ return new class extends Migration
     {
         Role::query()->insert([
             [
+                Role::ID => "9abc4607-0e41-4514-8cfe-1cbb5fd3a33c",
                 Role::NAME => "admin",
                 Role::DESCRIPTION => null
             ],
             [
+                Role::ID => "9abc4607-0e41-4514-8cfe-1cbb5fd3a44c",
                 Role::NAME => "teacher",
                 Role::DESCRIPTION => null
             ],
             [
+                Role::ID => "9abc4607-0e41-4514-8cfe-1cbb5fd3a55c",
                 Role::NAME => "student",
                 Role::DESCRIPTION => null
             ]

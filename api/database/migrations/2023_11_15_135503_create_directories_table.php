@@ -12,22 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('directories', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("parent_id");
-            $table->foreign("parent_id")
-                ->references("id")
-                ->on("directories")
-                ->onDelete("cascade");
+            $table->uuid("id")->primary();
             $table->string("name");
             $table->string("path");
             $table->integer("count_file");
             $table->integer("count_directory");
-            $table->unsignedBigInteger("creator_id");
-            $table->foreign('creator_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignUuid('creator_id')
+                ->constrained('users')
                 ->onDelete('cascade');
+
             $table->timestamps();
+        });
+        Schema::table("directories", function (Blueprint $table){
+            $table->foreignUuid("parent_id")
+                ->constrained("directories")
+                ->onDelete("cascade");
         });
     }
 

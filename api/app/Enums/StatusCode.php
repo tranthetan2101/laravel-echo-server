@@ -13,6 +13,5 @@ class StatusCode
     public const NOT_FOUND = 404;
     public const ACCESS_NOT_ALLOWED = 405;
     public const UNPROCESSABLE_ENTITY = 422;
-    public const IDG_CLIENT_INPUT_ERROR = 480;
     public const INTERNAL_SERVER_ERROR = 500;
 }
