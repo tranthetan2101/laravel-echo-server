@@ -1,7 +1,7 @@
 import Routes from "./routes"
 const App = () => {
     return (
-        <div className="App">
+        <div className="App bg-back">
             <Routes />
         </div>
     )

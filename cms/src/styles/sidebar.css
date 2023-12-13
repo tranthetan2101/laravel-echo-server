@@ -1,0 +1,9 @@
+.sidebar-container {
+    @apply bg-glass h-[96%] rounded-3xl ml-6 p-4 border transition-all duration-500 border-solid border-glass relative
+}
+.btn-toggle {
+    @apply absolute top-[7rem] flex justify-center items-center -left-5 w-10 h-10 bg-glass rounded-full cursor-pointer
+}
+.sidebar-item {
+    @apply items-center mt-2 p-4 rounded-lg hover:bg-white transition-all duration-300
+}
