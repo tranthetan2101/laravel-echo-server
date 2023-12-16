@@ -19,7 +19,7 @@ const SideBar = () => {
                 } sidebar-item left-4 bottom-4`}
                 key={item.text}
               >
-                <a href={`/${item.path}`} className="flex">
+                <a href={item.path} className="flex">
                   <div className="mr-5 text-[1.5rem] text-brown">
                     {item.icon}
                   </div>

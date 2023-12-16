@@ -1,7 +1,9 @@
+import MainTable from "../components/MainTable";
+
 const About = () => {
   return (
    <div className="about-page">
-        about
+        <MainTable />
    </div>
   );
 };

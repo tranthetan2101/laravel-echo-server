@@ -5,11 +5,11 @@ export const SIDEBAR_ITEMS = [
   {
     icon: <RxDashboard />,
     text: "Dashboard",
-    path: "dashboard",
+    path: "/dashboard",
   },
   {
     icon: <FiUser />,
     text: "User",
-    path: "user",
+    path: "/user",
   }
 ];

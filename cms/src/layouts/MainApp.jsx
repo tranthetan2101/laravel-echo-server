@@ -5,7 +5,7 @@ const MainApp = () => {
   return (
     <div className="w-full h-screen object-cover flex">
         <SideBar />
-        <div className="main-content">
+        <div className="main-content w-full">
             <Outlet />
         </div>
     </div>

@@ -1,6 +1,6 @@
 import "../styles/btn.css"
 
-const Button = (props) => {
+const MainButton = (props) => {
     const handleClick = () => {
         props.action();
     }
@@ -11,4 +11,4 @@ const Button = (props) => {
   )
 }
 
-export default Button
+export default MainButton
