@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_USER}/${REPOSITORY}/mysql:${SERVICE_VERSION}
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_USER}/${REPOSITORY}/api:${SERVICE_VERSION}
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_USER}/${REPOSITORY}/nginx:${SERVICE_VERSION}
+
+  cms:
+    build:
+      context: ./cms
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_USER}/${REPOSITORY}/ui:${SERVICE_VERSION}
+  
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_USER}/${REPOSITORY}/ui:${SERVICE_VERSION}
+
+  laravel-echo-server:
+    build:
+      context: ./laravel-echo-server
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_USER}/${REPOSITORY}/laravel-echo-server:${SERVICE_VERSION}
+
+  cache:
+    build:
+      context: ./cache
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_USER}/${REPOSITORY}/redis:${SERVICE_VERSION}

@@ -1,0 +1,15 @@
+Dockerfile
+Dockerfile.*
+vendor
+.vscode
+vendor
+.bash_history
+.dockerignore
+.editorconfig
+.env
+.gitattributes
+.gitignore
+package.json
+phpunit.xml
+README.md
+vite.config.js

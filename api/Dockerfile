@@ -29,16 +29,16 @@ COPY .dev/supervisord /etc/supervisord
 RUN mkdir -p /var/log/supervisord
 
 # Configure entrypoint script
-COPY .dev/docker-entrypoint.sh /var/www/.dev/docker-entrypoint.sh
-RUN chmod +x /var/www/.dev/docker-entrypoint.sh \
-    && chown www-data:www-data /var/www/.dev/docker-entrypoint.sh
+COPY api-entrypoint.sh /var/www/api-entrypoint.sh
+RUN chmod +x /var/www/api-entrypoint.sh \
+    && chown www-data:www-data /var/www/api-entrypoint.sh
 RUN chown -R www-data:www-data .
 USER root:www-data
 
 ENV ENABLE_CRONTAB 1
 ENV ENABLE_HORIZON 1
 
-ENTRYPOINT ["/bin/bash","/var/www/.dev/docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash","/var/www/api-entrypoint.sh"]
 
 EXPOSE 9000
 CMD ["supervisord", "-n", "-c", "/etc/supervisord/supervisord.conf"]
