@@ -1,15 +1,14 @@
 import {Routes, Route } from "react-router-dom";
-import MainApp from "./layouts/MainApp"
-import About from "./pages/about"
-import User from "./pages/user";
+import ChatList from "./pages/ChatList";
 
 export default function RoutesApp() {
     return (
         <Routes>
-            <Route path="/" element={<MainApp />}>
+            {/* <Route path="/" element={<MainApp />}>
                 <Route path="/dashboard" element={<About />} />
                 <Route path="/user" element={<User />} />
-            </Route>
+            </Route> */}
+            <Route path="/chats" element={<ChatList />} />
         </Routes>
     );
 }

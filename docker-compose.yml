@@ -36,29 +36,14 @@ services:
     networks:
       - recruits
 
-  ui:
-    container_name: ui
-    build:
-      context: ./ui
-      dockerfile: Dockerfile
-    volumes:
-      - ./ui:/home/node/learning-language/ui
-    working_dir: /home/node/learning-language/ui
-    ports:
-      - "3000:3000"
-    tty: true
-    restart: always
-    networks:
-      - recruits
-
   cms:
     container_name: cms
     build:
       context: ./cms
       dockerfile: Dockerfile
     volumes:
-      - ./cms:/home/node/learning-language/cms
-    working_dir: /home/node/learning-language/cms
+      - ./cms:/home/node/echo-server/cms
+    working_dir: /home/node/echo-server/cms
     ports:
       - "4000:4000"
     tty: true
