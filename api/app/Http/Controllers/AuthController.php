@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\StatusCode;
 use App\Exceptions\NotFoundException;
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use App\Service\Auth\AuthService;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
@@ -25,7 +27,7 @@ class AuthController extends Controller
     {
         $credentials = request([User::EMAIL, User::PASSWORD]);
         if(Auth::attempt($credentials)){
-            return $this->responseError("Incorrect info. Please try again", 401);
+            return $this->responseError("Incorrect info. Please try again", StatusCode::UNAUTHENTICATED);
         }
         $accessToken = $this->authService->createToken($request);
         return $this->responseSuccess(["token" => $accessToken]);
