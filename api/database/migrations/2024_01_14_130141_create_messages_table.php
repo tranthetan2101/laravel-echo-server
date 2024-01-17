@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->uuid("id")->primary();
-            $table->string("key");
-            $table->string("value");
-            $table->string("description")->nullable();
-            $table->uuid("creator_uid")->nullable();
-            $table->foreignUuid('creator_id')
+        Schema::create('messages', function (Blueprint $table) {
+            $table->id();
+            $table->string("messsage");
+
+            $table->foreignId('from')
                 ->constrained('users')
                 ->onDelete('cascade');
+
+            $table->integer('to');
+            $table->boolean("is_group");
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('messages');
     }
 };

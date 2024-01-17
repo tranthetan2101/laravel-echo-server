@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assign_tag', function (Blueprint $table) {
-            $table->string("assign_type");
-            $table->uuid("assign_id");
-            $table->foreignUuid("tag_id")
-                ->constrained("tags")
-                ->onDelete("cascade");
-            $table->timestamp("assign_date");
+        Schema::create('rooms', function (Blueprint $table) {
+            $table->id();
+            $table->string("name");
+            $table->timestamps();
         });
     }
 
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assign_tag');
+        Schema::dropIfExists('room');
     }
 };
